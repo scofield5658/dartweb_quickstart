@@ -2,29 +2,6 @@ import 'dart:convert';
 import 'dart:html';
 import 'dart:async';
 
-Iterable<String> thingsTodo() sync* {
-  var actions = ['Walk', 'Wash', 'Feed'];
-  var pets = ['cats', 'dogs'];
-
-  for (var action in actions) {
-    for (var pet in pets) {
-      if (pet == 'cats' && action != 'Feed') continue;
-      yield '$action the $pet';
-    }
-  }
-}
-
-void addTodoItem(UListElement list, String item) {
-  if (item.isEmpty) {
-    return;
-  }
-  print(item);
-
-  var listElement = LIElement();
-  listElement.text = item;
-  list.children.add(listElement);
-}
-
 Future<void> makeRequest(UListElement list) async {
   const path = 'https://dart.dev/f/portmanteaux.json';
   try {
@@ -69,14 +46,8 @@ UListElement todoList;
 UListElement wordList;
 ButtonElement deleteAll;
 
-void main() {
-  querySelector('#output').text = 'Your Dart app is running.';
-
-  toDoInput = querySelector('#to-do-input');
-  toDoInput.onBlur.listen((_) => addTodoItem(todoList, toDoInput.value));
-
-  todoList = querySelector('#todolist');
-  thingsTodo().forEach((item) => addTodoItem(todoList, item));
+void render() {
+  querySelector('#output').text = 'Hello World!';
 
   wordList = querySelector('#wordList');
   querySelector('#getWords').onClick.listen((_) => makeRequest(wordList));

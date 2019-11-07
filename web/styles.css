@@ -12,9 +12,3 @@ html, body {
   padding: 20px;
   text-align: center;
 }
-
-#todolist li:hover {
-  color: red;
-  font-size: 18px;
-  cursor:pointer;
-}
